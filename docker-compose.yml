@@ -1,0 +1,20 @@
+---
+version: "3.8"
+
+services:
+  adguard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports: 
+      - 3000:3000/tcp
+    volumes: 
+      - ~/Adguard/conf:/opt/adguardhome/conf
+      - ~/Adguard/work:/opt/adguardhome/work
+    networks:
+      - bridge
+
+networks:
+  bridge:
+    driver: bridge
