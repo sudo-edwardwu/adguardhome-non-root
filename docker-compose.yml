@@ -7,14 +7,15 @@ services:
       context: .
       dockerfile: Dockerfile
     restart: always
-    ports: 
-      - 3000:3000/tcp
-    volumes: 
+    ports:
+      - 53:53/tcp
+      - 53:53/udp
+      - 8088:80
+    volumes:
       - ~/Adguard/conf:/opt/adguardhome/conf
       - ~/Adguard/work:/opt/adguardhome/work
     networks:
-      - bridge
+      - host
 
 networks:
-  bridge:
-    driver: bridge
+  host:
